@@ -1,0 +1,42 @@
+{
+  "name": "angular-storage",
+  "description": "A service for working with webstorage",
+  "version": "0.3.0",
+  "main": "./dist/angular-storage.js",
+  "author": "Eddie Monge Jr.",
+  "company": "Aspera, Inc.",
+  "homepage": "http://github.com/Aspera/angular-storage",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Aspera/angular-storage.git"
+  },
+  "appPath": "src",
+  "ignore": [
+    "src",
+    "test",
+    "**/.*",
+    "Gruntfile.*",
+    "travis.yml",
+    "package.json",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.0.8"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.0.8",
+    "angular-scenario": "~1.0.8",
+    "mock-cookie": "~0.3.1"
+  },
+  "_release": "0.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.0",
+    "commit": "d3464c74a4d340b5ee2b5664fb334d61cb58c323"
+  },
+  "_source": "git://github.com/Aspera/angular-storage.git",
+  "_target": "~0.3.0",
+  "_originalSource": "angular-storage",
+  "_direct": true
+}

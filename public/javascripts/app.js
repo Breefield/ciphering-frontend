@@ -1,10 +1,9 @@
 (function() {
   "use strict";
-  angular.module('ciphering', ['ui.router', 'ciphering.controllers', 'ciphering.services']).config([
+  angular.module('ciphering', ['ui.router', 'ngResource', 'angular-storage', 'ciphering.controllers', 'ciphering.services']).config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $urlRouterProvider.otherwise('/');
-      $locationProvider.html5Mode(true);
-      return $stateProvider.state('home', {
+      $stateProvider.state('home', {
         url: '/',
         views: {
           main: {
@@ -13,11 +12,20 @@
           }
         }
       });
+      return $stateProvider.state('order', {
+        url: '/order',
+        views: {
+          main: {
+            templateUrl: 'partials/order.html',
+            controller: 'OrderController'
+          }
+        }
+      });
     }
   ]);
 
-  angular.module('ciphering.controllers', ['ciphering.controllers.main', 'ciphering.controllers.home']);
+  angular.module('ciphering.controllers', ['ciphering.controllers.main', 'ciphering.controllers.home', 'ciphering.controllers.order']);
 
-  angular.module('ciphering.services', ['ciphering.services.time']);
+  angular.module('ciphering.services', ['ciphering.services.materials', 'ciphering.services.ringsizes', 'ciphering.services.pixeldigits']);
 
 }).call(this);

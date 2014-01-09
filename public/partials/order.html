@@ -1,0 +1,45 @@
+<div class="page-header">
+    <h1>Order <small>and you shall receive</small></h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form role="form">
+            <div class="form-group digits">
+                <label for="digits">Digits</label>
+                <input type="text" autofocus class="form-control input-lg" name="digits" id="digits" placeholder="##.##" maxlength="5" pattern="[0-9]{2}.[0-9]{2}" ng-model="digits">
+            </div>
+            <div class="form-group ringsizes">
+                <label for="ringsize">Ring Size</label>
+                <select name="ringsize" ng-model="ringsize" ng-options="value.circumference+'mm — '+value.diameter+'mm' for value in ringsizeChoices" class="form-control input-lg" id="ringsize"></select>
+                <span class="help-block">circumference — diameter (<a href="http://www.ringsizes.co/" target="_blank">conversion table</a>)</span>
+            </div>
+            <div class="form-group materials">
+                <label for="material">Material</label>
+                <div class="row">
+                    <div class="col-md-4"><div ng-if="material" ng-style="{backgroundImage: 'url('+material.swatch+')'}" class="swatch"></div></div>
+                    <div class="col-md-8"><select name="material" ng-model="material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select></div>
+                </div>
+            </div>
+
+            <hr>
+            <p><button class="btn btn-default" ng-click="create()">Create</button></p>
+
+        </form>
+    </div>
+
+    <div class="col-md-8">
+        <div class="well well-lg text-center preview">Preview … ?</div>
+    </div>
+</div>
+
+<hr>
+
+<p>
+    <h5>Debugging</h5>
+    <pre><div ng-repeat="row in pixelgrid">{{ row }}</div></pre>
+    <pre>{{ parameters }}</pre>
+</p>
+
+
+<!-- <p ng-if="!authenticated"><a href="http://localhost:5000/authenticate/?return_url=http://localhost:4000/order?authenticated=1" class="btn btn-default">Authenticate</a></p> -->
