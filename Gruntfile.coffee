@@ -15,8 +15,8 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-shell'
     grunt.loadNpmTasks 'grunt-targethtml'
 
-    grunt.registerTask 'dist', ['clean', 'bower_concat', 'coffee', 'compass:dist', 'cssmin', 'modernizr', 'concat', 'uglify', 'copy', 'targethtml']
-    grunt.registerTask 'deploy', ['dist', 'rsync', 'clean']
+    grunt.registerTask 'dist', ['clean', 'bower_concat', 'coffee', 'compass:dist', 'cssmin', 'concat', 'uglify', 'copy', 'targethtml']
+    grunt.registerTask 'deploy', ['dist', 'shell:deployToDokku', 'clean']
     grunt.registerTask 'distserver', ['dist', 'connect:dist']
     grunt.registerTask 'devserver', ['bower-install', 'coffee:dev', 'compass:dev', 'concurrent:dev']
 
@@ -115,12 +115,14 @@ module.exports = (grunt) ->
                     {cwd: 'public/partials/', expand: true, src: '**', dest: 'dist/partials/'}
                     {cwd: 'public/fonts/', expand: true, src: '**', dest: 'dist/fonts/'}
                     {cwd: 'public/images/', expand: true, src: '**', dest: 'dist/images/'}
+                    {cwd: 'public/data/', expand: true, src: '**', dest: 'dist/data/'}
                 ]
 
         'cssmin':
             dist:
                 files:
                     'dist/stylesheets/screen.min.css': [
+                        'public/components/bootstrap/dist/css/bootstrap.css',
                         'build/stylesheets/screen.css'
                     ]
 
@@ -135,7 +137,7 @@ module.exports = (grunt) ->
                     'git show-ref --verify --quiet refs/heads/dist || ( git checkout --orphan dist && git rm -rf . && touch .nginx && mkdir www && touch www/index.html && git add . && git commit -am "Initial commit." )',
                     'git remote add dokku dokku@pbsit.es:ciphering',
                     'git remote add localdokku dokku@dokku.me:ciphering',
-                    '/usr/local/bin/git checkout dist',
+                    'git checkout dist',
                     'cd ..'
                 ].join(' && ')
 
