@@ -1,7 +1,7 @@
 "use strict"
 
 angular
-    .module('boilerplate.controllers.main', [])
+    .module('ciphering.controllers.main', [])
 
     .controller('MainController', ['$scope', '$state', ($scope, $state) ->
     ])

@@ -1,7 +1,7 @@
 "use strict"
 
 angular
-    .module('boilerplate.services.time', [])
+    .module('ciphering.services.time', [])
 
     .factory('time', ->
         current: -> new Date()

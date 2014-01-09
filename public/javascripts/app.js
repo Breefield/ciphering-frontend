@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module('boilerplate', ['ui.router', 'boilerplate.controllers', 'boilerplate.services']).config([
+  angular.module('ciphering', ['ui.router', 'ciphering.controllers', 'ciphering.services']).config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $urlRouterProvider.otherwise('/');
       $locationProvider.html5Mode(true);
@@ -16,8 +16,8 @@
     }
   ]);
 
-  angular.module('boilerplate.controllers', ['boilerplate.controllers.main', 'boilerplate.controllers.home']);
+  angular.module('ciphering.controllers', ['ciphering.controllers.main', 'ciphering.controllers.home']);
 
-  angular.module('boilerplate.services', ['boilerplate.services.time']);
+  angular.module('ciphering.services', ['ciphering.services.time']);
 
 }).call(this);

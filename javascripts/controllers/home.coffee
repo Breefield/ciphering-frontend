@@ -1,7 +1,7 @@
 "use strict"
 
 angular
-    .module('boilerplate.controllers.home', [])
+    .module('ciphering.controllers.home', [])
 
     .controller('HomeController', ['$scope', ($scope) ->
     ])

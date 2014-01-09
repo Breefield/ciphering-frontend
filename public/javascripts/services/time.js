@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module('boilerplate.services.time', []).factory('time', function() {
+  angular.module('ciphering.services.time', []).factory('time', function() {
     return {
       current: function() {
         return new Date();

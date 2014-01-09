@@ -1,10 +1,10 @@
 "use strict"
 
 angular
-    .module('boilerplate', [
+    .module('ciphering', [
         'ui.router',
-        'boilerplate.controllers',
-        'boilerplate.services'
+        'ciphering.controllers',
+        'ciphering.services'
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
@@ -21,13 +21,13 @@ angular
 
 
 angular
-    .module('boilerplate.controllers', [
-        'boilerplate.controllers.main',
-        'boilerplate.controllers.home',
+    .module('ciphering.controllers', [
+        'ciphering.controllers.main',
+        'ciphering.controllers.home',
     ])
 
 
 angular
-    .module('boilerplate.services', [
-        'boilerplate.services.time',
+    .module('ciphering.services', [
+        'ciphering.services.time',
     ])
