@@ -101,7 +101,12 @@ module.exports = (grunt) ->
                     middleware: (connect, options) ->
                         [
                             require('connect-livereload')(),
-                            connect.static(options.base),
+                            (req,res,next) ->
+                                require('fs').exists require('path').join(options.base, connect.utils.parseUrl(req).pathname), (exists) ->
+                                    req.url = '/' if not exists
+                                    next()
+                            ,
+                            connect.static(options.base)
                         ]
 
             dist:
