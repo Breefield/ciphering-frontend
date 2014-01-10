@@ -98,20 +98,17 @@ module.exports = (grunt) ->
                 options:
                     port: 4000
                     base: 'public'
+                    debug: true
+                    livereload: true
                     middleware: (connect, options) ->
                         [
-                            require('connect-livereload')(),
-                            (req,res,next) ->
-                                require('fs').exists require('path').join(options.base, connect.utils.parseUrl(req).pathname), (exists) ->
-                                    req.url = '/' if not exists
-                                    next()
-                            ,
+                            require('connect-file-exists-or-rewrite')(options.base),
                             connect.static(options.base)
                         ]
 
             dist:
                 options:
-                    port: 8888
+                    port: 8000
                     base: 'dist'
 
         'copy':
