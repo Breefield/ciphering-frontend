@@ -135,8 +135,8 @@ module.exports = (grunt) ->
                     '[ -d .dokku ] || git clone . .dokku',
                     'cd .dokku',
                     'git show-ref --verify --quiet refs/heads/dist || ( git checkout --orphan dist && git rm -rf . && touch .nginx && mkdir www && touch www/index.html && git add . && git commit -am "Initial commit." )',
-                    'git remote add dokku dokku@pbsit.es:ciphering',
-                    'git remote add localdokku dokku@dokku.me:ciphering',
+                    'git remote add dokku dokku@pbsit.es:<%= pkg.name %>',
+                    'git remote add localdokku dokku@dokku.me:<%= pkg.name %>',
                     'git checkout dist',
                     'cd ..'
                 ].join(' && ')
