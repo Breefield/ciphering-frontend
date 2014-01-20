@@ -2,7 +2,10 @@
   "use strict";
   angular.module('ciphering.controllers.order', []).controller('OrderController', [
     '$scope', '$stateParams', '$filter', 'ngStorage', 'ringsizes', 'materials', 'pixeldigits', function($scope, $stateParams, $filter, ngStorage, ringsizes, materials, pixeldigits) {
+      var initialsWatch;
       $scope.digits = ngStorage.get('digits') || '12.34';
+      $scope.initials1 = ngStorage.get('initials1') || 'AB';
+      $scope.initials2 = ngStorage.get('initials2') || 'CD';
       $scope.pixelgrid = [[1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1], [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], [1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], [1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1]];
       ringsizes.getData(function(data) {
         $scope.ringsizeChoices = data;
@@ -73,23 +76,41 @@
         }
         return _results;
       });
-      $scope.$watchCollection('[digits,ringsize,material]', function(newValues, oldValues) {
-        if (newValues[0]) {
-          ngStorage.set('digits', newValues[0]);
+      initialsWatch = function(key) {
+        return function(newValue, oldValue) {
+          var ok;
+          if (!(newValue != null ? newValue.length : void 0)) {
+            return;
+          }
+          ok = newValue.match(/^[a-zA-Z]{0,2}$/);
+          if (!ok) {
+            return $scope[key] = oldValue.trim();
+          } else {
+            return $scope[key] = newValue.toUpperCase().trim();
+          }
+        };
+      };
+      $scope.$watch('initials1', initialsWatch('initials1'));
+      $scope.$watch('initials2', initialsWatch('initials2'));
+      $scope.$watchCollection('[digits,initials1,initials2,ringsize,material]', function(newValues, oldValues) {
+        ngStorage.set('digits', newValues[0] ? newValues[0] : '');
+        ngStorage.set('initials', newValues[1] ? newValues[1] : '');
+        ngStorage.set('initials', newValues[2] ? newValues[2] : '');
+        if (newValues[3]) {
+          ngStorage.set('ringsize', newValues[3].diameter);
         }
-        if (newValues[1]) {
-          ngStorage.set('ringsize', newValues[1].diameter);
-        }
-        if (newValues[2]) {
-          return ngStorage.set('material', newValues[2].materialId);
+        if (newValues[4]) {
+          return ngStorage.set('material', newValues[4].materialId);
         }
       });
-      $scope.$watchCollection('[ringsize,pixelgrid,material,digits]', function(newValues, oldValues) {
+      $scope.$watchCollection('[ringsize,pixelgrid,material,digits,initials1,initials2]', function(newValues, oldValues) {
         return $scope.parameters = {
           ringRadius: newValues[0] ? newValues[0].circumference / (Math.PI * 2) : void 0,
           pattern: newValues[1] ? newValues[1] : void 0,
           material: newValues[2] ? parseInt(newValues[2].materialId, 10) : void 0,
-          digits: newValues[3] ? newValues[3] : void 0
+          digits: newValues[3] ? newValues[3] : void 0,
+          initials1: newValues[4] ? newValues[4] : void 0,
+          initials2: newValues[5] ? newValues[5] : void 0
         };
       });
       return $scope.create = function() {
