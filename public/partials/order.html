@@ -9,15 +9,13 @@
                 <label for="digits">Digits</label>
                 <input type="text" autofocus class="form-control input-lg" name="digits" id="digits" placeholder="##.##" maxlength="5" pattern="[0-9]{2}.[0-9]{2}" ng-model="digits">
             </div>
-            <div class="form-group initials1">
-                <label for="digits">Initials 1</label>
-                <input type="text" class="form-control input-lg" name="initials1" id="initials1" placeholder="AB" maxlength="2" pattern="[A-Z]{0,2}" ng-model="initials1">
-                <span class="help-block">These will be «engraved» on the left side of the inside</span>
-            </div>
-            <div class="form-group initials2">
-                <label for="digits">Initials 2</label>
-                <input type="text" class="form-control input-lg" name="initials2" id="initials2" placeholder="CD" maxlength="2" pattern="[A-Z]{0,2}" ng-model="initials2">
-                <span class="help-block">These will be «engraved» on the right side of the inside</span>
+            <div class="form-group initials">
+                <label for="digits">Initials</label>
+                <div class="row">
+                    <div class="col-xs-6"><input type="text" class="form-control input-lg" name="initials1" id="initials1" placeholder="AB" maxlength="2" pattern="[A-Z]{0,2}" ng-model="initials1"></div>
+                    <div class="col-xs-6"><input type="text" class="form-control input-lg" name="initials2" id="initials2" placeholder="CD" maxlength="2" pattern="[A-Z]{0,2}" ng-model="initials2"></div>
+                </div>
+                <span class="help-block">These will be «engraved» on the inside</span>
             </div>
             <div class="form-group ringsizes">
                 <label for="ringsize">Ring Size (diameter)</label>
