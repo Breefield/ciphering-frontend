@@ -1,9 +1,8 @@
 (function() {
   "use strict";
-  angular.module('ciphering', ['ui.router', 'ngResource', 'angular-storage', 'ciphering.controllers', 'ciphering.services']).config([
+  angular.module('ciphering', ['ui.router', 'ngResource', 'angular-storage', 'ciphering.controllers', 'ciphering.services']).constant('backendBaseURL', 'http://ciphering-backend.pbsit.es').config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $urlRouterProvider.otherwise('/');
-      $locationProvider.html5Mode(true);
       $stateProvider.state('home', {
         url: '/',
         views: {
@@ -13,12 +12,21 @@
           }
         }
       });
-      return $stateProvider.state('order', {
+      $stateProvider.state('order', {
         url: '/order',
         views: {
           main: {
             templateUrl: 'partials/order.html',
             controller: 'OrderController'
+          }
+        }
+      });
+      return $stateProvider.state('orderWaiting', {
+        url: '/order/:orderId',
+        views: {
+          main: {
+            templateUrl: 'partials/order-waiting.html',
+            controller: 'OrderWaitingController'
           }
         }
       });

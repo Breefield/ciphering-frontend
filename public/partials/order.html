@@ -3,49 +3,61 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <form role="form">
+    <div class="col-md-8 col-md-push-4"><div class="img-rounded preview"></div></div>
+    <div class="col-md-4 col-md-pull-8">
+        <form role="form" name="orderform" novalidate ng-submit="createOrder(order)">
             <div class="form-group digits">
                 <label for="digits">Digits</label>
-                <input type="text" autofocus class="form-control input-lg" name="digits" id="digits" placeholder="##.##" maxlength="5" pattern="[0-9]{2}.[0-9]{2}" ng-model="digits">
+                <span class="text-danger" ng-if="orderform.digits.$dirty &amp;&amp; orderform.digits.$error.required">This field is required</span>
+                <span class="text-danger" ng-if="orderform.digits.$error.pattern">The format needs to be ##.##</span>
+                <input type="text" autofocus class="form-control input-lg" name="digits" id="digits" placeholder="##.##" maxlength="5" ng-pattern="/^[0-9]{2}.[0-9]{2}$/" required ng-model="order.digits">
             </div>
             <div class="form-group initials">
                 <label for="digits">Initials</label>
                 <div class="row">
-                    <div class="col-xs-6"><input type="text" class="form-control input-lg" name="initials1" id="initials1" placeholder="AB" maxlength="2" pattern="[A-Z]{0,2}" ng-model="initials1"></div>
-                    <div class="col-xs-6"><input type="text" class="form-control input-lg" name="initials2" id="initials2" placeholder="CD" maxlength="2" pattern="[A-Z]{0,2}" ng-model="initials2"></div>
+                    <div class="col-xs-6">
+                        <span class="text-danger" ng-if="orderform.initials1.$error.pattern">Capital letters please</span>
+                        <input type="text" class="form-control input-lg" name="initials1" id="initials1" placeholder="AB" maxlength="2" ng-pattern="/^[A-Z]{0,2}$/" ng-model="order.initials1">
+                    </div>
+                    <div class="col-xs-6">
+                        <span class="text-danger" ng-if="orderform.initials2.$error.pattern">Capital letters please</span>
+                        <input type="text" class="form-control input-lg" name="initials2" id="initials2" placeholder="CD" maxlength="2" ng-pattern="/^[A-Z]{0,2}$/" ng-model="order.initials2">
+                    </div>
                 </div>
                 <span class="help-block">These will be «engraved» on the inside</span>
             </div>
             <div class="form-group ringsizes">
                 <label for="ringsize">Ring Size (diameter)</label>
-                <select name="ringsize" ng-model="ringsize" ng-options="value.diameter+' mm' for value in ringsizeChoices" class="form-control input-lg" id="ringsize"></select>
+                <select name="ringsize" ng-model="order.ringsize" ng-options="value.diameter+' mm' for value in ringsizeChoices" class="form-control input-lg" id="ringsize"></select>
                 <span class="help-block"><a href="http://www.ringsizes.co/" target="_blank">conversion table</a></span>
             </div>
             <div class="form-group materials">
                 <label for="material">Material</label>
                 <div class="row">
-                    <div class="col-md-4"><div ng-if="material" ng-style="{backgroundImage: 'url('+material.swatch+')'}" class="swatch"></div></div>
-                    <div class="col-md-8"><select name="material" ng-model="material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select></div>
+                    <div class="col-xs-4"><div ng-if="order.material" ng-style="{backgroundImage: 'url('+order.material.swatch+')'}" class="swatch"></div></div>
+                    <div class="col-xs-8"><select name="material" ng-model="order.material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select></div>
                 </div>
             </div>
-
+            <div class="form-group email">
+                <label for="digits">E-Mail</label>
+                <span class="text-danger" ng-if="orderform.email.$error.email">Please enter a valid e-mail address</span>
+                <span class="text-danger" ng-if="orderform.email.$dirty &amp;&amp; orderform.email.$error.required">This field is required</span>
+                <input type="email" class="form-control input-lg" name="email" id="email" required ng-model="order.email">
+                <span class="help-block">We only use this to notify you when your ring is ready to order.</span>
+            </div>
             <hr>
-            <p><button class="btn btn-default" ng-click="create()">Create</button></p>
+            <p><button class="btn btn-success" ng-disabled="orderform.$invalid">Create Ring</button></p>
 
         </form>
     </div>
-
-    <div class="col-md-8 img-rounded preview"></div>
 </div>
 
-<hr>
-
-<p>
+<div class="debug">
+    <hr>
     <h5>Debugging</h5>
     <pre><div ng-repeat="row in pixelgrid">{{ row }}</div></pre>
-    <pre>{{ parameters }}</pre>
-</p>
+    <pre>{{ order }}</pre>
+</div>
 
 
 <!-- <p ng-if="!authenticated"><a href="http://localhost:5000/authenticate/?return_url=http://localhost:4000/order?authenticated=1" class="btn btn-default">Authenticate</a></p> -->

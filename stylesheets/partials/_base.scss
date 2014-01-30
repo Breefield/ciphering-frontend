@@ -9,7 +9,17 @@
 .preview {
     border: 0;
     display: block;
-    height: 480px;
+    padding-bottom: 75%;
     background: image-url('photo.jpg') center center no-repeat;
     background-size: cover;
+    margin-bottom: 1em;
+}
+
+.debug {
+    opacity: 0;
+    @include transition(0.5s ease opacity);
+
+    &:hover {
+        opacity: 1;
+    }
 }

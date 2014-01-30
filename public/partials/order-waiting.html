@@ -1,0 +1,15 @@
+<div ng-if="polling">
+    <h2>Waiting …</h2>
+    <p>We are currently processing your ring. It usually takes 2-5 minutes. You can wait for it to finish, but we will also send you an e-mail once it's ready.</p>
+    <p class="well">Current status: <strong>{{ status.description }}</strong><br>(last checked: {{ lastChecked|date:"HH:mm:ss" }})</p>
+</div>
+
+<div ng-if="status.status=='not-found'">
+    <h2>Not found :-(</h2>
+    <p>Sorry, we couldn't find your ring. But you should have received an e-mail with a link to the order page.</p>
+</div>
+
+<div ng-if="status.status=='notified'">
+    <h2>Yay!</h2>
+    <p>Your ring is now ready to order. Please click <a ng-href="{{ status.shapeways_url }}">here</a>.</p>
+</div>
