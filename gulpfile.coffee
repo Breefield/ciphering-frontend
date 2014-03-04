@@ -175,12 +175,10 @@ gulp.task 'open', ['default'], ->
     require('open')("http://#{pkg.name}.dev/")
 
 
-gulp.task 'deploy', ['dist'], ->
+gulp.task 'deploy', ->
     s3options =
         key: process.env.AWS_ACCESS_KEY_ID
         secret: process.env.AWS_SECRET_ACCESS_KEY
-        bucket: "#{pkg.name}.antistatic.io"
-    setTimeout ->
-        gulp.src('dist/**/*')
-           .pipe($.s3(s3options))
-    , 2000
+        bucket: "ciphering.me"
+    gulp.src('dist/**/*')
+       .pipe($.s3(s3options))

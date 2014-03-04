@@ -1,23 +1,73 @@
 body {
     background: #222;
+    color: #FFF;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, h1 {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+a {
+    color: inherit;
+    opacity: 0.5;
+
+    &:hover {
+        color: inherit;
+    }
 }
 
 section {
     background-position: top center;
     background-repeat: repeat-y;
+    @include box-sizing(border-box);
 }
 
 #about {
     background-image: image-url('bg_1.png');
+    padding-top: 4em;
     height: 1199px;
+
+    h1 {
+        font-size: 48px;
+
+        small {
+            color: inherit;
+            font-size: 40%;
+        }
+    }
+
+    .text {
+        margin-top: 620px;
+        width: 350px;
+    }
 }
 
 #how-it-works {
     background-image: image-url('bg_2_stripe.png');
+    padding: 3em 0;
+
+    img {
+        margin: 3em 0;
+    }
 }
 
 #gallery {
     background-image: image-url('bg_3_stripe.png');
+
+    .images {
+        margin: 3em auto;
+        max-width: 800px;
+
+        img {
+            width: 100%;
+        }
+    }
 }
 
 #production {
@@ -28,36 +78,30 @@ section {
 #order {
     height: 1200px;
     background-image: image-url('bg_6.png');
+
+    .materials {
+        .swatch {
+            width: 100%;
+            height: 46px;
+            background-size: cover;
+        }
+    }
+
+    .help-block {
+        color: inherit;
+        font-size: 80%;
+    }
+
+    label {
+        a {
+            font-weight: normal;
+        }
+    }
 }
 
 #who {
     background-image: image-url('bg_7_stripe.png');
-}
-
-.images {
-    max-width: 800px;
-    margin: 0 auto;
-
-    img {
-        width: 100%;
-    }
-}
-
-.materials {
-    .swatch {
-        width: 100%;
-        height: 46px;
-        background-size: cover;
-    }
-}
-
-.preview {
-    border: 0;
-    display: block;
-    padding-bottom: 75%;
-    background: image-url('photo.jpg') center center no-repeat;
-    background-size: cover;
-    margin-bottom: 1em;
+    padding-bottom: 4em;
 }
 
 .debug {
@@ -66,5 +110,12 @@ section {
 
     &:hover {
         opacity: 1;
+    }
+}
+
+.btn-primary {
+    &, &[disabled], &:focus, &:hover {
+        background: #4F1F1E;
+        border-color: #4F1F1E;
     }
 }
