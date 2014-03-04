@@ -1,9 +1,11 @@
 .DS_Store
+Thumbs.db
 *~
 \#*
 .\#*
 .sass-cache
 node_modules
-./dist
-./build
-.dokku
+bower_components
+app
+dist
+.tmp
