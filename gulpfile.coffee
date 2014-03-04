@@ -15,6 +15,7 @@ paths.dev =
         sass: 'sass/**/*.scss'
         coffee: 'coffee/**/*.coffee'
         images: ['images/**/*.png', 'images/**/*.jpg', 'images/**/*.gif', 'images/**/*.webp']
+        imagesSVG: 'images/**/*.svg'
         fonts: 'fonts/**/*'
         components: 'bower_components/**/*'
     dest:
@@ -68,7 +69,16 @@ gulp.task 'scripts', ->
 
 gulp.task 'images', ->
     gulp.src(paths.dev.src.images)
+        .pipe($.changed(paths.dev.dest.images))
         .pipe($.imagemin())
+        .on('error', errorHandler)
+        .pipe(gulp.dest(paths.dev.dest.images))
+
+
+gulp.task 'imagesSVG', ->
+    gulp.src(paths.dev.src.imagesSVG)
+        .pipe($.changed(paths.dev.dest.images))
+        .pipe($.svgmin())
         .on('error', errorHandler)
         .pipe(gulp.dest(paths.dev.dest.images))
 
@@ -119,7 +129,7 @@ gulp.task 'distserver', ['dist'], ->
     require('open')("http://#{pkg.name}-dist.dev/")
 
 
-gulp.task 'default', ['html', 'styles', 'scripts', 'images', 'fonts', 'bower', 'server'], ->
+gulp.task 'default', ['html', 'styles', 'scripts', 'images', 'imagesSVG', 'fonts', 'bower', 'server'], ->
     gulp.watch paths.dev.src.html, ['html']
     gulp.watch paths.dev.src.sass, ['styles']
     gulp.watch paths.dev.src.coffee, ['scripts']
@@ -133,7 +143,7 @@ gulp.task 'default', ['html', 'styles', 'scripts', 'images', 'fonts', 'bower', '
         lr.changed(file.path)
 
 
-gulp.task 'dist', ['clean', 'html', 'styles', 'scripts', 'images', 'fonts', 'bower'], ->
+gulp.task 'dist', ['clean', 'html', 'styles', 'scripts', 'images', 'imagesSVG', 'fonts', 'bower'], ->
     timestamp = (new Date()).getTime()
     gulp.src(paths.dist.src.html)
         .pipe($.useref())

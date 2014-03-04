@@ -11,6 +11,7 @@
     "angular-ui-router": "~0.2.7",
     "bootstrap": "~3.0.3",
     "angular-resource": "~1.2.7",
-    "angular-storage": "~0.3.0"
+    "angular-storage": "~0.3.0",
+    "bootstrap-lightbox": "~0.7.0"
   }
 }
