@@ -12,118 +12,13 @@
         <!-- endbuild -->
     </head>
     <body>
-        <section id="about">
+        <div class="identity">
             <div class="container">
                 <h1>Ciphering <small>personalised generative jewellery</small></h1>
-                <div class="text">
-                    <p>Ciphering is a personalised ring which physical form encodes numbers of your choosing.</p>
-                    <p>The message becomes visible only when you take the ring off your finger and either shine light, or look through it in a correct angle.</p>
-                    <p>Your input of four numbers and four letters are fed to an algorithm that generates the unique shape.</p>
-                    <p>First the form is 3D printed in wax, and subsequently cast in silver, bronze or gold plated brass.</p>
-                </div>
             </div>
-        </section>
+        </div>
 
-        <section id="how-it-works">
-            <div class="container">
-                <h1>How it works</h1>
-                <img src="/images/principle.svg">
-                <div class="row">
-                    <div class="col-md-2">You can direectly look through the ring, Or shine light through it.</div>
-                    <div class="col-md-2 col-md-offset-3">You can direectly look through the ring, Or shine light through it.</div>
-                    <div class="col-md-2 col-md-offset-3">You can direectly look through the ring, Or shine light through it.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery">
-            <div class="container">
-                <div class="row images">
-                    <div class="col-xs-4"><img src="/images/image01.small.jpg"></div>
-                    <div class="col-xs-4"><img src="/images/image02.small.jpg"></div>
-                    <div class="col-xs-4"><img src="/images/image01.small.jpg"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="production">
-            <div class="container">
-                <h1>Production</h1>
-                <ol>
-                    <li>You enter date, intials, ring size and material of choice.</li>
-                    <li>You enter date, intials, ring size and material of choice.</li>
-                    <li>You enter date, intials, ring size and material of choice.</li>
-                    <li>You enter date, intials, ring size and material of choice.</li>
-                    <li>You enter date, intials, ring size and material of choice.</li>
-                    <li>… and shipped to you!</li>
-                </ol>
-            </div>
-        </section>
-
-        <section id="order">
-            <div class="container">
-                <h1>Order</h1>
-
-                <form role="form" name="orderform" ng-controller="OrderController" novalidate ng-submit="createOrder(order)">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group digits">
-                                <label for="digits">Digits</label>
-                                <span class="text-danger" ng-if="orderform.digits.$dirty &amp;&amp; orderform.digits.$error.required">This field is required</span>
-                                <span class="text-danger" ng-if="orderform.digits.$error.pattern">The format needs to be ##.##</span>
-                                <input type="text" xx-autofocus class="form-control input-lg" name="digits" id="digits" placeholder="##.##" maxlength="5" ng-pattern="/^[0-9]{2}.[0-9]{2}$/" required ng-model="order.digits">
-                            </div>
-                            <div class="form-group initials">
-                                <label for="digits">Initials</label>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <span class="text-danger" ng-if="orderform.initials1.$error.pattern">Capital letters please</span>
-                                        <input type="text" class="form-control input-lg" name="initials1" id="initials1" placeholder="AB" maxlength="2" ng-pattern="/^[A-Z]{0,2}$/" ng-model="order.initials1">
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <span class="text-danger" ng-if="orderform.initials2.$error.pattern">Capital letters please</span>
-                                        <input type="text" class="form-control input-lg" name="initials2" id="initials2" placeholder="CD" maxlength="2" ng-pattern="/^[A-Z]{0,2}$/" ng-model="order.initials2">
-                                    </div>
-                                </div>
-                                <span class="help-block">These will be «engraved» on the inside of the ring</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group ringsizes">
-                                <label for="ringsize">Ring Size (diameter) <small><a href="http://www.ringsizes.co/" target="_blank">conversion table</a></small></label>
-                                <select name="ringsize" ng-model="order.ringsize" ng-options="value.diameter+' mm' for value in ringsizeChoices" class="form-control input-lg" id="ringsize"></select>
-                            </div>
-                            <div class="form-group materials">
-                                <label for="material">Material</label>
-                                <div class="row">
-                                    <div class="col-xs-4"><div ng-if="order.material" ng-style="{backgroundImage: 'url('+order.material.swatch+')'}" class="swatch"></div></div>
-                                    <div class="col-xs-8"><select name="material" ng-model="order.material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group email">
-                                <label for="digits">E-Mail</label>
-                                <span class="text-danger" ng-if="orderform.email.$error.email">Please enter a valid e-mail address</span>
-                                <span class="text-danger" ng-if="orderform.email.$dirty &amp;&amp; orderform.email.$error.required">This field is required</span>
-                                <input type="email" class="form-control input-lg" name="email" id="email" required ng-model="order.email">
-                                <span class="help-block">We only use this to notify you when your ring is ready to order.</span>
-                            </div>
-                            <p><button class="btn btn-primary btn-lg" ng-disabled="orderform.$invalid">Create Ring</button></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <section id="who">
-            <div class="container">
-                <h1>Who</h1>
-                <p>Ciphering is a part of a research project between the <a href="http://www.udk-berlin.de/">Berlin University of the Arts</a> and the <a href="http://www.tu-berlin.de/">Technical University Berlin</a>, funded by the <a href="http://www.einsteinfoundation.de/">Einsteinstiftung</a> under <a href="http://www.hybrid-plattform.org/">hybrid plattform</a>.<br>For more information please email <a href="mailto:jussi.angesleva@iki.fi">jussi.angesleva@iki.fi</a>.</p>
-            </div>
-        </section>
+        <div ui-view></div>
 
         <!-- build:js /js/app.min.js -->
         <script src="/lib/jquery/dist/jquery.js"></script>

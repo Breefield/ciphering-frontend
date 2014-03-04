@@ -61,6 +61,7 @@ angular
     ])
 
     .controller('OrderWaitingController', ['$scope', '$stateParams', '$state', '$interval', '$http', 'backendBaseURL', ($scope, $stateParams, $state, $interval, $http, backendBaseURL) ->
+        console.log 'WAITING'
         if not $stateParams.orderId
             $state.transitionTo 'order'
             return
@@ -76,8 +77,8 @@ angular
                 if data.status in ['notified', 'failed', 'not-found']
                     $interval.cancel(i)
                     $scope.polling = false
-                if data.shapeways_url
-                    location.href = data.shapeways_url
+                # if data.shapeways_url
+                #     location.href = data.shapeways_url
 
         checkStatus()
         i = $interval checkStatus, 2000, 500

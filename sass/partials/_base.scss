@@ -22,6 +22,22 @@ a {
     }
 }
 
+.identity {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 80px;
+
+    h1 {
+        font-size: 48px;
+
+        small {
+            color: inherit;
+            font-size: 40%;
+        }
+    }
+}
+
 section {
     background-position: top center;
     background-repeat: repeat-y;
@@ -33,17 +49,8 @@ section {
     padding-top: 4em;
     height: 1199px;
 
-    h1 {
-        font-size: 48px;
-
-        small {
-            color: inherit;
-            font-size: 40%;
-        }
-    }
-
     .text {
-        margin-top: 620px;
+        margin-top: 700px;
         width: 350px;
     }
 }
@@ -102,6 +109,10 @@ section {
 #who {
     background-image: image-url('bg_7_stripe.png');
     padding-bottom: 4em;
+}
+
+#waiting {
+    margin-top: 200px;
 }
 
 .debug {

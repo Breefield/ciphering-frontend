@@ -16,26 +16,17 @@ angular
         $urlRouterProvider.otherwise('/')
         # $locationProvider.html5Mode(true)
 
+        console.log 'CONFIG'
+
         $stateProvider.state 'home',
             url: '/'
-            views:
-                main:
-                    templateUrl: 'partials/home.html'
-                    controller: 'HomeController'
-
-        $stateProvider.state 'order',
-            url: '/order'
-            views:
-                main:
-                    templateUrl: 'partials/order.html'
-                    controller: 'OrderController'
+            templateUrl: 'partials/home.html'
+            controller: 'HomeController'
 
         $stateProvider.state 'orderWaiting',
             url: '/order/:orderId'
-            views:
-                main:
-                    templateUrl: 'partials/order-waiting.html'
-                    controller: 'OrderWaitingController'
+            templateUrl: 'partials/order-waiting.html'
+            controller: 'OrderWaitingController'
     ])
 
 
