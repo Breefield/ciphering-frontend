@@ -26,49 +26,90 @@ a {
     position: absolute;
     left: 0;
     right: 0;
-    top: 80px;
+    top: 40px;
+    z-index: 9999;
 
     h1 {
         font-size: 48px;
+        margin: 0;
 
         small {
             color: inherit;
             font-size: 40%;
         }
     }
-}
 
-section {
-    background-position: top center;
-    background-repeat: repeat-y;
-    @include box-sizing(border-box);
-}
+    @media screen and (max-width: 1280px) {
+        top: 20px;
 
-#about {
-    background-image: image-url('bg_1.png');
-    padding-top: 4em;
-    height: 1199px;
+        h1 {
+            font-size: 36px;
+        }
+    }
 
-    .text {
-        margin-top: 700px;
-        width: 350px;
+    @media screen and (max-width: 992px) {
+        h1 {
+            font-size: 32px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        h1 {
+            small {
+                display: block;
+            }
+        }
     }
 }
 
+section {
+    @include box-sizing(border-box);
+    position: relative;
+
+    .bg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+#about {
+    background-color: #532120;
+    min-height: 520px;
+
+    .content {
+        top: 60%;
+    }
+
+    .text {
+        width: 40%;
+    }
+
+    @media screen and (max-width: 992px) {
+        .text {
+            width: auto;
+        }
+    }
+
+}
+
 #how-it-works {
-    background-image: image-url('bg_2_stripe.png');
+    background-color: #532120;
     padding: 3em 0;
 
     img {
         margin: 3em 0;
     }
-}
-
-#gallery {
-    background-image: image-url('bg_3_stripe.png');
 
     .images {
-        margin: 3em auto;
+        margin: 0 auto;
         max-width: 800px;
 
         img {
@@ -78,13 +119,55 @@ section {
 }
 
 #production {
-    background-image: image-url('bg_4.png');
-    height: 1200px;
+    background-color: #222222;
+
+    .content {
+        top: 5%
+    }
+
+    .flow {
+        @include no-bullets;
+        padding: 0;
+
+        .box {
+            background: rgba(#FFF, 0.3);
+            height: 100%;
+            padding: 6px 12px 8px;
+            border-radius: 4px;
+            text-align: center;
+
+            &:after {
+                content: "\2192";
+                position: absolute;
+                top: 50%;
+                right: -.35em;
+                margin-top: -0.5em;
+                line-height: 1;
+                font-size: 160%;
+            }
+
+            @media screen and (max-width: 767px) {
+                margin-bottom: 1.5em;
+
+                &:after {
+                    content: "\2193";
+                    top: auto;
+                    bottom: -.85em;
+                    right: 0;
+                    left: 0;
+                }
+            }
+        }
+
+        li:last-child .box:after {
+            content: '';
+        }
+    }
 }
 
 #order {
-    height: 1200px;
-    background-image: image-url('bg_6.png');
+    background-color: #222222;
+    margin-top: 100px;
 
     .materials {
         .swatch {
@@ -104,11 +187,10 @@ section {
             font-weight: normal;
         }
     }
-}
 
-#who {
-    background-image: image-url('bg_7_stripe.png');
-    padding-bottom: 4em;
+    .who {
+        margin-top: 100px;
+    }
 }
 
 #waiting {

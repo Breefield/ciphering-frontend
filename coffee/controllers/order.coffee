@@ -61,7 +61,6 @@ angular
     ])
 
     .controller('OrderWaitingController', ['$scope', '$stateParams', '$state', '$interval', '$http', 'backendBaseURL', ($scope, $stateParams, $state, $interval, $http, backendBaseURL) ->
-        console.log 'WAITING'
         if not $stateParams.orderId
             $state.transitionTo 'order'
             return
