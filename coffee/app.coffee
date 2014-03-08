@@ -4,6 +4,7 @@ angular
     .module('ciphering', [
         'ui.router',
         'ngResource',
+        'ngDialog',
         'angular-storage',
         'ciphering.controllers',
         'ciphering.services'
@@ -15,8 +16,6 @@ angular
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
         $urlRouterProvider.otherwise('/')
         # $locationProvider.html5Mode(true)
-
-        console.log 'CONFIG'
 
         $stateProvider.state 'home',
             url: '/'

@@ -23,15 +23,13 @@
         </div>
 
         <div class="row images">
-            <div class="col-xs-4"><img src="/images/image01.small.jpg"></div>
-            <div class="col-xs-4"><img src="/images/image02.small.jpg"></div>
-            <div class="col-xs-4"><img src="/images/image01.small.jpg"></div>
+            <a ng-repeat="image in images|limitTo:3" class="col-xs-4" href="#" ng-click="openLightbox(image)"><img ng-src="{{ image.thumb }}"></a>
         </div>
     </div>
 </section>
 
 <section id="production">
-    <img src="/images/bg_3.png" class="bg">
+    <img src="/images/bg_4.png" class="bg">
     <div class="content">
         <div class="container">
             <h1>Production</h1>
