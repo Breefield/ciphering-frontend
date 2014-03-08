@@ -119,7 +119,7 @@ section {
 }
 
 #production {
-    background-color: #222222;
+    background: image-url('bg_5_stripe.png');
 
     .content {
         top: 5%
@@ -166,8 +166,8 @@ section {
 }
 
 #order {
-    background-color: #222222;
-    margin-top: 100px;
+    background: image-url('bg_5_stripe.png');
+    padding-top: 100px;
 
     .materials {
         .swatch {
@@ -189,7 +189,8 @@ section {
     }
 
     .who {
-        margin-top: 100px;
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
 }
 
