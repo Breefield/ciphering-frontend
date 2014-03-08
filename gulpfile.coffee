@@ -14,7 +14,7 @@ paths.dev =
         html: 'html/**/*.html'
         sass: 'sass/**/*.scss'
         coffee: 'coffee/**/*.coffee'
-        images: ['images/**/*.png', 'images/**/*.jpg', 'images/**/*.gif', 'images/**/*.webp']
+        images: ['images/**/*.png', 'images/**/*.jpg', 'images/**/*.gif', 'images/**/*.webp', 'images/**/*.mp4']
         imagesSVG: 'images/**/*.svg'
         fonts: 'fonts/**/*'
         components: 'bower_components/**/*'

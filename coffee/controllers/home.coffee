@@ -13,6 +13,7 @@ angular
             {large: '/images/gallery/OnGlass_2.jpg',    thumb: '/images/gallery/thumbs/OnGlass_2.jpg',    video: false}
             {large: '/images/gallery/onFinger.jpg',     thumb: '/images/gallery/thumbs/onFinger.jpg',     video: false}
         ]
+        $scope.selectedImage = $scope.images[0]
 
         $scope.openLightbox = (image) ->
             $scope.selectedImage = image
@@ -21,3 +22,13 @@ angular
                 className: 'ngdialog-theme-plain'
                 scope: $scope
             )
+
+        $scope.prevImage = ->
+            i = $scope.images.indexOf($scope.selectedImage) - 1
+            i = $scope.images.length-1 if i == -1
+            $scope.selectedImage = $scope.images[i]
+
+        $scope.nextImage = ->
+            i = $scope.images.indexOf($scope.selectedImage) + 1
+            i = 0 if i >= $scope.images.length
+            $scope.selectedImage = $scope.images[i]

@@ -1,2 +1,6 @@
+<a class="prev" href="#" ng-click="prevImage()">«</a>
+<a class="next" href="#" ng-click="nextImage()">»</a>
+
 <img ng-src="{{ selectedImage.large }}" ng-if="!selectedImage.video">
-<video src="{{ selectedImage.large }}" autoplay controls ng-if="selectedImage.video">
+<video ng-src="{{ selectedImage.large }}" autoplay ng-if="selectedImage.video">
+
