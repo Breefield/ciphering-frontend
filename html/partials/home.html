@@ -51,6 +51,10 @@
     <div class="container">
         <h1>Order</h1>
 
+        <p><strong>Please note: All prices are approximations</strong><br>
+        <small>The parameters affect the total volume of the metal slightly, and hence the price. You will get an accurate quote when you proceed to «Get a quote».</small></p>
+        <br>
+
         <form role="form" name="orderform" ng-controller="OrderController" novalidate ng-submit="createOrder(order)">
             <div class="row">
                 <div class="col-md-3">
@@ -82,10 +86,7 @@
                     </div>
                     <div class="form-group materials">
                         <label for="material">Material</label>
-                        <div class="row">
-                            <div class="col-xs-4"><div ng-if="order.material" ng-style="{backgroundImage: 'url('+order.material.swatch+')'}" class="swatch"></div></div>
-                            <div class="col-xs-8"><select name="material" ng-model="order.material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select></div>
-                        </div>
+                        <select name="material" ng-model="order.material" ng-options="value.title + ' (≈' + value.estimatedPrice + '€)' for value in materialChoices" class="form-control input-lg" id="material"></select>
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-1">
@@ -96,7 +97,7 @@
                         <input type="email" class="form-control input-lg" name="email" id="email" required ng-model="order.email">
                         <span class="help-block">We only use this to notify you when your ring is ready to order.</span>
                     </div>
-                    <p><button class="btn btn-primary btn-lg" ng-disabled="orderform.$invalid">Create Ring</button></p>
+                    <p><button class="btn btn-primary btn-lg" ng-disabled="orderform.$invalid">Get a quote</button> <span class="estimate">≈ {{ order.material.estimatedPrice }} €</span></p>
                 </div>
             </div>
             <div class="row">

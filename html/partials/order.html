@@ -34,8 +34,7 @@
             <div class="form-group materials">
                 <label for="material">Material</label>
                 <div class="row">
-                    <div class="col-xs-4"><div ng-if="order.material" ng-style="{backgroundImage: 'url('+order.material.swatch+')'}" class="swatch"></div></div>
-                    <div class="col-xs-8"><select name="material" ng-model="order.material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select></div>
+                    <select name="material" ng-model="order.material" ng-options="value.title for value in materialChoices" class="form-control input-lg" id="material"></select>
                 </div>
             </div>
             <div class="form-group email">
